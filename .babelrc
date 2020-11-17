@@ -1,0 +1,21 @@
+{
+    "presets": [
+        "@babel/preset-react",
+        [
+            "@babel/preset-env",
+            {
+                "forceAllTransforms": true,
+                "useBuiltIns": "entry",
+                "corejs": "2"
+            }
+        ]
+    ],
+
+    "plugins": [
+        "@babel/plugin-proposal-object-rest-spread",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-runtime",
+        "@babel/plugin-transform-object-assign",
+        "@babel/plugin-syntax-dynamic-import"
+    ]
+}

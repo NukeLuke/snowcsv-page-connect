@@ -1,0 +1,38 @@
+{
+    "name": "snowcsv-page-connect",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "",
+    "author": "luka3055",
+    "license": "MIT",
+    "scripts": {
+        "set-version": "yarn config set version-tag-prefix \"\" && yarn config set version-git-message \"publish package version %s\" && yarn version && git log -1",
+        "build": "webpack-cli --config=webpack.config.js",
+        "pb": "sh ./scripts/publish.sh"
+    },
+    "files": [
+        "index.js",
+        "loader.js",
+        "package.json",
+        "README.md"
+    ],
+    "dependencies": {
+        "@babel/polyfill": "7.2.5",
+        "@babel/runtime": "^7.5.5",
+        "@babel/runtime-corejs2": "7.4.4",
+        "core-js": "2.6.5",
+        "debug": "^4.1.1"
+    },
+    "devDependencies": {
+        "babel-eslint": "^10.0.2",
+        "eslint": "6.0.1",
+        "eslint-config-airbnb-base": "^13.2.0",
+        "eslint-plugin-import": "^2.18.2"
+    },
+    "peerDependencies": {
+        "react-redux": "^7.2.2",
+        "redux": "^4.0.5",
+        "redux-saga": "^1.0.3",
+        "reselect": "^4.0.0"
+    }
+}
