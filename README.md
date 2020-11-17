@@ -39,12 +39,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: require.resolve('@sunl-fe/sfe-page-connect'),
+                test: require.resolve('snowcsv-page-connect'),
                 use: ['babel-loader'],
             },
             {
                 test: /\.(js|jsx)$/,
-                use: ['babel-loader', '@sunl-fe/sfe-page-connect/loader'],
+                use: ['babel-loader', 'snowcsv-page-connect/loader'],
                 include: ['src'],
             },
         ],
@@ -57,7 +57,23 @@ module.exports = {
 前端模块封装了 page app 初始化过程. 如项目有特殊的初始化流程, 可通过重写 `init()` 方法来实现.
 
 ```javascript
-import { createConnector, PageApp } from '@sunl-fe/sfe-page-connect'
+import { createConnector, PageApp } from 'snowcsv-page-connect'
+```
+
+```javascript
+import { PageApp } from '@sunl-fe/sfe-page-connect'
+
+class App extends PageApp {
+    init(...args) {
+        // 调用父类 init() 函数
+        PageApp.prototype.init.call(this, ...args)
+        // 覆盖 init 逻辑...
+    }
+}
+
+const app = new App()
+
+export default app
 ```
 
 -   createConnector(namespace): Function, 用于创建`$pageConnect(Component)` 函数。
@@ -72,5 +88,4 @@ import { createConnector, PageApp } from '@sunl-fe/sfe-page-connect'
 
 注意事项:
 
--   此包要和 `@sunl-fe/sfe-service` 配合一起使用
--   **项目中 babel 配置文件必须命名为 `babel.config.js`, 否则此包无法正常工作.** 此包为未经过 babel 编辑的 ES6 代码, 需要在使用的项目中对其进行编译(`@sunl-fe/sfe-service` 会自动处理编译的工作, 开发人员不需要关心), 而 babel 只有在配置文件命名为 `babel.config.js` 时才能正常编译 `node_modules` 里的代码.
+-   **项目中 babel 配置文件必须命名为 `babel.config.js`, 否则此包无法正常工作.** 此包为未经过 babel 编辑的 ES6 代码, 需要在使用的项目中对其进行编译(`snowcsv-page-connect` 会自动处理编译的工作, 开发人员不需要关心), 而 babel 只有在配置文件命名为 `babel.config.js` 时才能正常编译 `node_modules` 里的代码.
