@@ -7,7 +7,7 @@ module.exports = {
         index: path.resolve(__dirname, 'index.js'),
     },
     output: {
-        library: 'SfePageConnect',
+        library: 'SnowcsvPageConnect',
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
         libraryTarget: 'umd',
